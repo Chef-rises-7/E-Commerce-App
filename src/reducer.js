@@ -15,6 +15,23 @@ export const reducer = (state, action) => {
                 basket: [...state.basket,action.item]
             };
 
+        case "DELETE_FROM_BASKET":
+            const index = state.basket.findIndex( (item) => {
+                return item.id === action.id;
+            })
+
+            const newBasket = [...state.basket];
+            if(index >=0) {
+                newBasket.splice(index,1);
+            } else {
+                console.warn(`Product with id: ${action.id} not found`);
+            }
+
+            return {
+                ...state,
+                basket: newBasket
+            };
+
         default:
             return state;
             
