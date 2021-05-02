@@ -14,11 +14,11 @@ const Checkout = () => {
                     Your Shopping Basket
                 </h2>
                 {
-                    basket?.map((item) => {
+                    basket?.map((item,index) => {
                         return <CheckoutProduct 
                             title={item.title}
                             image={item.image}
-                            id={item.id}
+                            id={index}
                             rating={item.rating}
                             price={item.price}
                         />

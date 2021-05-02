@@ -16,8 +16,8 @@ export const reducer = (state, action) => {
             };
 
         case "DELETE_FROM_BASKET":
-            const index = state.basket.findIndex( (item) => {
-                return item.id === action.id;
+            const index = state.basket.findIndex( (item,ind) => {
+                return ind === action.id;
             })
 
             const newBasket = [...state.basket];
