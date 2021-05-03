@@ -20,9 +20,9 @@ const Subtotal = () => {
                 value={getBasketTotal(basket)}
                 displayType={"text"}
                 thousandSeparator={true}
-                prefix={"$"}
+                prefix={"₹"}
             />
-            <button>Click to Checkout</button>
+            <button className="subtotal__button">Click to Checkout</button>
         </div>
     )
 }

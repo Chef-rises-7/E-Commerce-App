@@ -19,7 +19,7 @@
     margin: 0 5px;
 }
 
-button {
+.subtotal__button {
     padding: 3px 0;
     background-color: #f0c14b;
     border: 1px solid;
