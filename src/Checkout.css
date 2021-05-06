@@ -14,3 +14,9 @@
     margin-right: 10px;
     border-bottom: 1px solid lightgray;
 }
+
+/* .item-exit-active {
+    position: relative;
+    left: 400px;
+    transition: left 1500ms ease-out;
+  } */

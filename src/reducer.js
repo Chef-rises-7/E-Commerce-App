@@ -17,20 +17,20 @@ export const reducer = (state, action) => {
             };
 
         case "DELETE_FROM_BASKET":
-            const index = state.basket.findIndex( (item,ind) => {
-                return ind === action.id;
-            })
+            // const index = state.basket.findIndex( (item,ind) => {
+            //     return ind === action.id;
+            // })
 
-            const newBasket = [...state.basket];
-            if(index >=0) {
-                newBasket.splice(index,1);
-            } else {
-                console.warn(`Product with id: ${action.id} not found`);
-            }
+            // const newBasket = [...state.basket];
+            // if(index >=0) {
+            //     newBasket.splice(index,1);
+            // } else {
+            //     console.warn(`Product with id: ${action.id} not found`);
+            // }
 
             return {
                 ...state,
-                basket: newBasket
+                basket: state.basket.filter( (item,index) => index !== action.id)
             };
 
         case "SET_USER":

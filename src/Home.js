@@ -11,7 +11,7 @@ const Home = () => {
                     <Product
                         id={1}
                         title="Demon slayer mugen train"
-                        price={69}
+                        price={80}
                         image="http://prodimage.images-bn.com/pimages/9781974704422_p0_v2_s1200x630.jpg"
                         rating={5}
                     />
