@@ -21,7 +21,6 @@ const DisplayProducts = () => {
     const [{basket},dispatch] = useStateValue();
     return (
         <FlipMove 
-        staggerDelayBy={20}
           enterAnimation={{
             from: {
               transform: "rotateX(180deg)",
@@ -36,7 +35,7 @@ const DisplayProducts = () => {
               transform: ""
             },
             to: {
-              transform: "translateX(50%)",
+              transform: "translateX(50%) scale(0.4)",
               opacity: 0.1
             }
           }}
