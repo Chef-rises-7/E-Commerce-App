@@ -46,6 +46,10 @@
     cursor: pointer;
     margin: 0;
 }
+
+.vis {
+    display: none;
+}
 /* .checkoutProduct__info button {
     display: block;
 } */

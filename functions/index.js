@@ -15,9 +15,18 @@ app.get("/",(req,res) => {
 });
 
 
-app.post("/payments/create",(req,res) => {
+app.post("/payments/create",async (req,res) => {
     const total = req.query.total;
     console.log("booya!!!",total);
+
+    const paymentIntent = await stripe.paymentIntents.create({
+        amount: total,
+        currency: "inr"
+    });
+
+    res.status(201).send({
+        clientSecret: paymentIntent.client_secret
+    });
 });
 
 exports.api = functions.https.onRequest(app);

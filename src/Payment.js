@@ -7,6 +7,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from './reducer';
 import axios from "./axios";
+import { db } from "./firebase.js";
 
 const Payment = () => {
     const history = useHistory();
@@ -20,16 +21,17 @@ const Payment = () => {
     const [succeeded,setSucceeded] = useState(false);
     const [clientSecret,setClientSecret] = useState(true);
 
-    // useEffect( () => {
-    //     const getClientSecret = async () => {
-    //         const response = await axios({
-    //             method: "post",
-    //             url: `payments/create?total=${getBasketTotal(basket)*100}`
-    //         });
-    //         setClientSecret(response.data.clientSecret);
-    //     }
-    //     getClientSecret();
-    // },[basket]);
+    useEffect( () => {
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: "post",
+                url: `payments/create?total=${getBasketTotal(basket)*100}`
+            });
+            setClientSecret(response.data.clientSecret);
+        }
+        getClientSecret();
+    },[basket]);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -44,8 +46,23 @@ const Payment = () => {
             setError(null);
             setProcessing(false);
 
+            db
+                .collection("users")
+                .doc(user?.uid)
+                .collection("orders")
+                .doc(paymentIntent.id)
+                .set({
+                    basket: basket,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created 
+                });
+
+            dispatch({
+                type: "EMPTY_BASKET"
+            });
+
             history.replace("/orders");
-        })
+        });
     };
 
     const handleChange = e => {
@@ -85,7 +102,7 @@ const Payment = () => {
                                 <CurrencyFormat
                                     renderText={(value) => (
                                         <>
-                                            <p>Order Total: {value}</p>
+                                            <p> <strong> Order Total: {value} </strong></p>
                                         </>
                                     )}
                                     decimalScale={2}

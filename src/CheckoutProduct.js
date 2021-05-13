@@ -5,7 +5,7 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import { useStateValue } from './StateProvider';
 
 
-const CheckoutProduct = ({id,title,image,rating,price}) => {
+const CheckoutProduct = ({id,title,image,rating,price,hideRmBtn}) => {
     const [{ basket },dispatch] =  useStateValue();
     const deleteBasketItem = () => {
         dispatch({
@@ -23,7 +23,7 @@ const CheckoutProduct = ({id,title,image,rating,price}) => {
                 <div className="checkoutProduct__rating">
                     {Array(rating).fill().map((_,i) => <StarIcon style={{color: "#FFCC00"}}/>)}
                 </div>
-                <div className="checkoutProduct__button">
+                <div className={`checkoutProduct__button ${hideRmBtn && "vis"}`}>
                     <p>Remove From Basket</p> <button onClick={deleteBasketItem}><DeleteOutlineIcon /></button>
                 </div>
                 
