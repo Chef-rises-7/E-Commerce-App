@@ -12,7 +12,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import Orders from "./Orders.js";
 
-const promise = loadStripe("pk_test_51IJIkZKGErwzweTlyspMdNS3pgoSoLzgo5cFF74gU1SbYniMhd4EEeO9OPByem3FjxtxAlojfC0chMaOjBH297iF00teCe0m7L");
+const promise = loadStripe("pk_test_51HPvU9DFg5koCdLGJJbNo60QAU99BejacsvnKvT8xnCu1wFLCuQP3WBArscK3RvSQmSIB3N0Pbsc7TtbQiJ1vaOi00X9sIbazL");
 function App() {
   const [{},dispatch] = useStateValue();
   useEffect( ()=> {
@@ -38,6 +38,7 @@ function App() {
       <Switch>
       <div className="app">
         <Route path="/orders">
+          <Header />
           <Orders />
         </Route>
         <Route path="/payment">
@@ -64,3 +65,4 @@ function App() {
 }
 
 export default App;
+// pk_test_51IJIkZKGErwzweTlyspMdNS3pgoSoLzgo5cFF74gU1SbYniMhd4EEeO9OPByem3FjxtxAlojfC0chMaOjBH297iF00teCe0m7L
